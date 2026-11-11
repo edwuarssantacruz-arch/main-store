@@ -7,7 +7,7 @@ http://localhost/main-store/settings/database.php
     
 //Local connection
     $local_host = "localhost";
-    $local_port = "5432";
+    $local_port = "5433";
     $local_dbname = "main_store";
     $local_user = "postgres";
     $local_password = "Abc123";
@@ -41,14 +41,14 @@ http://localhost/main-store/settings/database.php
     if (!$local_conn) {
         die("Error local connection");
     } else {
-        echo "Success database local connection!!!";
+      //  echo "Success database local connection!!!";
     }
 
 
 if (!$supa_conn) {
         die("Error supa connection");
     } else {
-        echo "<br>Success database supa connection!!!";
+       // echo "<br>Success database supa connection!!!";
     }
 
 
