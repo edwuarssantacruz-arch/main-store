@@ -1,3 +1,17 @@
+<?php
+session_start ();
+
+if(!isset($_SESSION['user_id'])){
+
+      header('refresh:0;url=signin.html');
+    exit();   
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +21,9 @@
 </head>
 <body>
      
-<center > <h3>Welcome to Main store </h3>
-<a href ="h">loginout</a>
+<center > 
+    <?php echo $_SESSION['user_firstname'] . " ". $_SESSION['user_lastname']; ?>
+      <h3>Welcome to Main store </h3>| <a href="longout.php">longout</a>
 
 </center>
 
