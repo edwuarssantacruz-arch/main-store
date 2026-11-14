@@ -3,10 +3,10 @@
 include('../settings/database.php');
 
 session_start ();
-if(!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_firstname'])) {
     header('refresh:0;url=signin.html');
 } else {
-     header('refresh:0;url=home.php');
+    header('refresh:0;url=home.php');
 }
 
 // Get payload from frontend

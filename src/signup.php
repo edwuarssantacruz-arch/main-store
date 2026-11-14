@@ -9,6 +9,8 @@ $ident_number = $_POST['idnumber'];
 $mobile_phone = $_POST['mphone'];
 $email = $_POST['email'];
 $passwd = MD5($_POST['pswd']);
+$photo_url ='photos/photo_defaul.png';
+
 
 $sql_check_email= "SELECT * FROM users WHERE email = '$email' ";
 
@@ -23,13 +25,15 @@ if($total<1){
             // Prepare query
             $sql = "
                 INSERT INTO
-                users (firstname, lastname, ident_number, email, password)
+                users (firstname, lastname, ident_number, email, password, url_photo)
                 VALUES (
                     '$first_name',
                     '$last_name',
                     '$ident_number',
                     '$email',
-                    '$passwd'
+                    '$passwd',
+                    '$photo_url'
+
                 );
             ";
             
