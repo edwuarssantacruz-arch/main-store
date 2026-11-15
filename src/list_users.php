@@ -2,8 +2,34 @@
 /*use this url to print  data  in browser
 http://127.0.0.1/main-store/src/list_users.php
 
-
+include('../settings/database.php');
 */
+include('../settings/database.php');
+
+//Get data  from users table
+
+
+$sql="
+
+SELECT 
+    id,
+    firstname || ' ' || lastname AS fullname,
+    email,
+    mobile_phone,
+    CASE 
+        WHEN status = true THEN 'active' 
+        ELSE 'inactive' 
+     END AS status,
+    url_photo 
+FROM 
+    users;
+
+
+";
+$res = pg_query($local_conn, $sql);
+
+
+
 
 ?>
 
@@ -29,39 +55,38 @@ http://127.0.0.1/main-store/src/list_users.php
           <th>options</th>
         </tr>
 
+        <?php while($row = pg_fetch_assoc($res)) { ?>
+
+
           <!--here print data from  database -->
           
         <tr>
           <th>
-            <img src = "photos/photo_defaul.png " width ="40" alt="alt photo profile">
+            <img src = "<?= $row['url_photo'] ?>" width ="40" alt="alt photo profile">
           </th> 
-          <th>santiago santacruz</th>
-          <th>email</th>
-          <th>12345</th>
-          <th> active</th>
-          <th>
-           <a href="#">
-            <img src="icons/pencil.png" alt="Edit" width="20"> 
-        </a>
-            
+          <th><?= $row['fullname'] ?></th>
+          <th><?= $row['email'] ?></th>
+          <th><?= $row['mobile_phone'] ?></th>
+          <th><?= $row['status'] ?></th>
+          <td align="center">
+                <a href="#">
+                  <img src="icons/pencil.png" alt="Edit" width="20"> 
+              </a>
+                  
 
-           <a href="#">
-            <img src="icons/search.png" alt="Edit" width="20">
-         </a>
-            
+                <a href="#">
+                  <img src="icons/search.png" alt="Edit" width="20">
+              </a>
+                  
 
-           <a href="#">
-            <img src="icons/delete.png" alt="Edit" width="20"> 
-        </a>
-             
-
-
-           
+                <a href="#">
+                  <img src="icons/delete.png" alt="Edit" width="20"> 
+              
+                </a>
+              </td>
+            </tr>
+            <?php } ?>
          
-        </td>
-    </tr>
-
-
     <table>
-</body>
+  </body>
 </html>

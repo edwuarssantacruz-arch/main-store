@@ -7,7 +7,7 @@ http://localhost/main-store/settings/database.php
     
 //Local connection
     $local_host = "localhost";
-    $local_port = "5433";
+    $local_port = "5432";
     $local_dbname = "main_store";
     $local_user = "postgres";
     $local_password = "Abc123";

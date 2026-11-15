@@ -25,14 +25,15 @@ if($total<1){
             // Prepare query
             $sql = "
                 INSERT INTO
-                users (firstname, lastname, ident_number, email, password, url_photo)
+                users (firstname, lastname, ident_number, email, password, url_photo , mobile_phone)
                 VALUES (
                     '$first_name',
                     '$last_name',
                     '$ident_number',
                     '$email',
                     '$passwd',
-                    '$photo_url'
+                    '$photo_url',
+                    '$mobile_phone'
 
                 );
             ";
