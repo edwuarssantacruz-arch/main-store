@@ -81,7 +81,7 @@ $res = pg_query($local_conn, $sql);
               </a>
                   
 
-                <a href="#">
+                <a href="delete_user.php?userID=<?= $row['id'] ?>">
                   <img src="icons/delete.png" alt="Edit" width="20"> 
               
                 </a>
