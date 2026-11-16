@@ -18,7 +18,7 @@ http://localhost/main-store/settings/database.php
         dbname=$local_dbname
         user=$local_user
         password=$local_password
-    ");
+    "); 
  
 
 //Supabase

@@ -41,11 +41,13 @@ $res = pg_query($local_conn, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main_store</title>
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
+</head>
 <body>
 
-    <table border ="2" align= "center">
+    <table class="table table-dark table-striped">
         <tr>
           <th>photo</th> 
           <th>full name</th>
@@ -68,7 +70,7 @@ $res = pg_query($local_conn, $sql);
           <th><?= $row['email'] ?></th>
           <th><?= $row['mobile_phone'] ?></th>
           <th><?= $row['status'] ?></th>
-          <td align="center">
+          <td >
                 <a href="#">
                   <img src="icons/pencil.png" alt="Edit" width="20"> 
               </a>
