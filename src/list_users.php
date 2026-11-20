@@ -3,7 +3,22 @@
 http://127.0.0.1/main-store/src/list_users.php
 
 include('../settings/database.php');
+
+
+
 */
+  session_start ();
+
+  if(!isset($_SESSION['user_id'])){
+
+        header('refresh:0;url=signin.html');
+      exit();   
+  }
+
+
+
+
+
 include('../settings/database.php');
 
 //Get data  from users table
@@ -46,6 +61,11 @@ $res = pg_query($local_conn, $sql);
 
 </head>
 <body>
+  <select>
+       <option >list all users</option>
+       <option >list active users</option>
+       <option >list inactive users</option>
+  </select>
 
     <table class="table table-dark table-striped">
         <tr>
@@ -71,7 +91,8 @@ $res = pg_query($local_conn, $sql);
           <th><?= $row['mobile_phone'] ?></th>
           <th><?= $row['status'] ?></th>
           <td >
-                <a href="#">
+                <a href="edit_user.php?userID=<?= $row['id'] ?>">
+                  
                   <img src="icons/pencil.png" alt="Edit" width="20"> 
               </a>
                   
@@ -85,10 +106,31 @@ $res = pg_query($local_conn, $sql);
                   <img src="icons/delete.png" alt="Edit" width="20"> 
               
                 </a>
+
+
+                 <a href="update_user_status.php?userID=<?= $row['id'] ?>&userStatus=<?= $row['status'] ?>">
+                  <?php
+
+                  if ($row['status'] == 'active') {
+                      echo "<img src='icons/disable.png' alt='inactive user' width='20'>";
+                  } else {
+                      echo "<img src='icons/enable.png' alt='active user' width='20'>";
+                  }
+
+
+
+                  ?>
+              
+                </a>
+
+
+
               </td>
+
             </tr>
             <?php } ?>
          
     <table>
+      <a href="home.php">Back to home</a>
   </body>
 </html>

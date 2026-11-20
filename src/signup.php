@@ -1,5 +1,16 @@
 <?php
 // Get database connection
+
+session_start ();
+
+  if(!isset($_SESSION['user_id'])){
+
+        header('refresh:0;url=signin.html');
+      exit();   
+  }
+
+
+
 include('../settings/database.php');
  
 // Get payload from frontend

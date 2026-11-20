@@ -27,6 +27,9 @@ if(!isset($_SESSION['user_id'])){
 
 </center>
 
+    Menu : <br>
+    <a href="list_users.php">List users</a> <br>
+
 
 
 </body>
