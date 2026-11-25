@@ -1,6 +1,6 @@
 <?php
 // Get database connection
-
+/*
 session_start ();
 
   if(!isset($_SESSION['user_id'])){
@@ -8,8 +8,7 @@ session_start ();
         header('refresh:0;url=signin.html');
       exit();   
   }
-
-
+*/
 
 include('../settings/database.php');
  
@@ -19,7 +18,7 @@ $last_name = $_POST['lname'];
 $ident_number = $_POST['idnumber'];
 $mobile_phone = $_POST['mphone'];
 $email = $_POST['email'];
-$passwd = MD5($_POST['pswd']);
+$passwd = password_hash($_POST['pswd'], PASSWORD_DEFAULT);
 $photo_url ='photos/photo_defaul.png';
 
 
