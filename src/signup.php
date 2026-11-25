@@ -1,5 +1,6 @@
 <?php
 // Get database connection
+//aplication
 
 session_start ();
 
