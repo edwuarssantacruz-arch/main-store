@@ -1,7 +1,6 @@
 <?php
 // Get database connection
-//aplication
-
+/*
 session_start ();
 
   if(!isset($_SESSION['user_id'])){
@@ -9,8 +8,7 @@ session_start ();
         header('refresh:0;url=signin.html');
       exit();   
   }
-
-
+*/
 
 include('../settings/database.php');
  
@@ -20,17 +18,19 @@ $last_name = $_POST['lname'];
 $ident_number = $_POST['idnumber'];
 $mobile_phone = $_POST['mphone'];
 $email = $_POST['email'];
-$passwd = MD5($_POST['pswd']);
+$passwd = password_hash($_POST['pswd'], PASSWORD_DEFAULT);
 $photo_url ='photos/photo_defaul.png';
 
 
 $sql_check_email= "SELECT * FROM users WHERE email = '$email' ";
 
 $res = pg_query($local_conn, $sql_check_email);
+$resupabase = pg_query($supa_conn, $sql_check_email);
 
 $total = pg_num_rows($res);
+$supabase_total = pg_num_rows($resupabase);
 
-if($total<1){
+if($total<1 && $supabase_total<1){
 
 
  
@@ -52,8 +52,9 @@ if($total<1){
             
             // Execute query
             $res = pg_query($local_conn, $sql);
+            $resupabase = pg_query($supa_conn, $sql);
             
-            if ($res) {
+            if ($res && $resupabase) {
             // echo "User has been created successfully !!!";
 
             echo "<script>alert('User has bee create successfully !!!') </script>";
@@ -61,9 +62,7 @@ if($total<1){
 
 
 
-            } else {
-                //echo "Error: User hasn't been created successfully !!!";
-            }
+            } 
 
 } else {
            echo "<script>alert('User email alredy exists .try again !!!') </script>";
